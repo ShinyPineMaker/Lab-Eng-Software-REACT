@@ -1,5 +1,5 @@
 import React from "react";
-import Count from "./components/Count";
+import Count from "./Components/Count";
 
 const Atv2 = () => {
     return(
