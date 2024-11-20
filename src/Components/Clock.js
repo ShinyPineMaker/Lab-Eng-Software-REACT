@@ -1,10 +1,34 @@
+import React, { Component } from "react";
 
-const Board = () =>{
+class Clock extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { date: new Date() };
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
     return (
-        <div>
-            <h3>Relógio</h3>
-        </div>
-    )
+      <div>
+        <h2>{this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
 }
 
-export default Board;
+
+export default Clock;

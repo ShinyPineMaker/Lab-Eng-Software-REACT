@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
-import MinhasRotas from './minhasRotas';
+
+import MyRoutes from './myRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <MinhasRotas />
+  <React.StrictMode>
+    <MyRoutes />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
