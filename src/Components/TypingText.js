@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 const TypingText = () => {
-    const [text, setText] = useState("");  // State to hold the current text
-    const fullText = "Conheça a Fatec";   // The full text you want to display
-    let index = 0;
-
-    /* useEffect(() => {
-        const typingInterval = setInterval(() => {
-            setText((prevText) => prevText + fullText[index]);  // Add one character at a time
-            index += 1;
-            
-            if (index === fullText.length) {
-                clearInterval(typingInterval);  // Stop when the full text is typed
-            }
-        }, 100);  // Typing speed (100ms per character)
-
-        return () => clearInterval(typingInterval);  // Cleanup interval on unmount
-    }, []);
-    */
-   
-    return (
-        <div>
-            {fullText}
-        </div>
-    );
-};
+    const text = "Conheça a Fatec";
+    const [typedText, setTypedText] = useState("");
+    const [index, setIndex] = useState(0);
+  
+    useEffect(() => {
+      const typeText = () => {
+        if (index < text.length) {
+          setTypedText((prev) => prev + text[index]);
+          setIndex((prevIndex) => prevIndex + 1);
+        } else {
+          setIndex(0);
+          setTypedText("");
+        }
+      };
+  
+      const intervalId = setInterval(typeText, 100);
+      
+      return () => clearInterval(intervalId);
+    }, [index, text]);
+  
+    return <div style={{ fontFamily: "monospace", whiteSpace: "nowrap" }}>{typedText}</div>;
+  };
 
 export default TypingText;
